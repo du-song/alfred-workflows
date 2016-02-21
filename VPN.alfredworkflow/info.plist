@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>vpn.alfred.app.rollingcode.org</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>FA8250DA-37F8-456B-B127-5525C4BFCE15</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B18259E7-F64E-4E96-9AD7-529C06BCA8A4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Song Du</string>
+	<key>description</key>
+	<string>List/Connect/Disconnect VPN Profiles in OS X 10.11+</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>VPN</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>vpn</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading VPN profiles</string>
+				<key>script</key>
+				<string>l = `/usr/sbin/scutil --nc list`
+print '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
+
+l.scan(/.*\((\w+)\)\s+(.+)\s+(\w+)\s+"([^"]+)"\s+\[([^\s]+)\]/) { |x|
+  i = x[1]
+  s = x[0] == 'Disconnected' ? "Connect" : "Disconnect"
+  a = x[0] == 'Disconnected' ? "start" : "stop"
+  n = x[3]
+  print "\n&lt;item uid=\"#{i}\" arg=\"#{a} #{i}\"&gt;&lt;title&gt;#{s} #{n}&lt;/title&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;"
+}
+
+print "\n&lt;/items&gt;"</string>
+				<key>title</key>
+				<string>Select VPN profile</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>FA8250DA-37F8-456B-B127-5525C4BFCE15</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>s = "{query}"
+
+`/usr/sbin/scutil --nc #{s}`</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B18259E7-F64E-4E96-9AD7-529C06BCA8A4</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>B18259E7-F64E-4E96-9AD7-529C06BCA8A4</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>FA8250DA-37F8-456B-B127-5525C4BFCE15</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.rollingcode.org/</string>
+</dict>
+</plist>
