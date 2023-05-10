@@ -12,7 +12,20 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4DF6E213-1628-47C4-BCE7-881AC9A513AF</string>
+				<string>BACAFC3E-EFC7-4BE8-BAFB-ACBBCD5A0FC2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E774ED1A-3337-4824-ADFC-257A465DD737</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BACAFC3E-EFC7-4BE8-BAFB-ACBBCD5A0FC2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -35,37 +48,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<true/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query="{query}"
-
-urlencode() {
-    setopt localoptions extendedglob
-    input=( ${(s::)1} )
-    print ${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-])/%${(l:2::0:)$(([##16]#match))}}
-}
-
-open --background 'one-thing:?text='`urlencode $query`</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>4DF6E213-1628-47C4-BCE7-881AC9A513AF</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -81,6 +63,48 @@ open --background 'one-thing:?text='`urlencode $query`</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>264A09D9-DE34-403A-9524-C67F6525811D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsfiles</key>
+				<false/>
+				<key>acceptsmulti</key>
+				<integer>0</integer>
+				<key>acceptstext</key>
+				<true/>
+				<key>acceptsurls</key>
+				<false/>
+				<key>name</key>
+				<string>set One Thing text</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.universalaction</string>
+			<key>uid</key>
+			<string>E774ED1A-3337-4824-ADFC-257A465DD737</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>one-thing:?text={query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>BACAFC3E-EFC7-4BE8-BAFB-ACBBCD5A0FC2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -100,12 +124,19 @@ This workflow is not affiliated with One Thing app.</string>
 			<key>ypos</key>
 			<real>50</real>
 		</dict>
-		<key>4DF6E213-1628-47C4-BCE7-881AC9A513AF</key>
+		<key>BACAFC3E-EFC7-4BE8-BAFB-ACBBCD5A0FC2</key>
 		<dict>
 			<key>xpos</key>
-			<real>370</real>
+			<real>240</real>
 			<key>ypos</key>
-			<real>50</real>
+			<real>280</real>
+		</dict>
+		<key>E774ED1A-3337-4824-ADFC-257A465DD737</key>
+		<dict>
+			<key>xpos</key>
+			<real>45</real>
+			<key>ypos</key>
+			<real>280</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
